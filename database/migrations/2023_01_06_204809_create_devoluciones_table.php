@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('autores_libros', function (Blueprint $table) {
+        Schema::create('devoluciones', function (Blueprint $table) {
             $table->id();
-            //FK
-            $table->unsignedBigInteger('id_libro');
-            $table->unsignedBigInteger('id_autor');
-            //RESTRICCION DE FK
-            $table->foreign('id_autor')->references('id')->on('autores')->onDelete('cascade');
-            $table->foreign('id_libro')->references('id')->on('libros')->onDelete('cascade');
+            //id del prestamo
+            $table->unsignedBigInteger('prestamos_id');
+            $table->foreign('prestamos_id')->references('id')->on('prestamos')->onDelete('cascade')->onUpdate('cascade');
+            //comentarios
+            $table->string('observaciones',100);
+            //fecha de devoucion
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autores_libros');
+        Schema::dropIfExists('devoluciones');
     }
 };

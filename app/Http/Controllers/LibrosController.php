@@ -2,69 +2,129 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Libros;
 use Illuminate\Http\Request;
-
+use App\Models\Editoriales;
+use App\Models\Categorias;
+use App\Models\Autores;
+use App\Models\AutoresLibros;
+use App\Models\Copias;
+use App\Models\user;
+//use Illuminate\Support\Facades\Storage;
+ 
 class LibrosController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:ver-libro|crear-libro|editar-libro|borrar-libro', ['only' => ['index']]);
+         $this->middleware('permission:crear-libro', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-libro', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-libro', ['only' => ['destroy']]);
+         $this->middleware('permission:ver-libro', ['only' => ['show']]);
+    }
+
+    public function index()
+    {
+        $libro=Libros::all();
+        return view("libros.index",compact("libro"));
+    }
+
     /**
-     * Show the form for creating the resource.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        abort(404);
+
+        $editorial=Editoriales::all();
+        $categoria=Categorias::all();
+        $autores=Autores::all();
+        return view("libros.create",compact('editorial','categoria','autores'));
     }
 
     /**
-     * Store the newly created resource in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        abort(404);
+        
+        /*$request->validate([
+            "titulo"=>"required",
+            "anio"=>"required",
+            "descripcion"=>"required",
+            "editoriales_id"=>"required",
+            "file"=>"required|image|max:2048",
+            ],[],["name"=>"nombre","content"=>"contenido"]);*/
+
+        $libro=Libros::Create($request->all());
+
+        /*if ($request->file('file')) {
+            $url=Storage::put('public/libros',$request->file('file'));
+            $libro->image()->create([
+                'url'=>$url
+            ]);
+        }*/
+
+
+        foreach ($request->autores_id as $autor) {
+            //dd($autor);
+            $asigna_autor=AutoresLibros::firstOrCreate(['libros_id'=>$libro->id,
+                        'autores_id'=>$autor]);
+        }
+        for($i=1;$i<=$request->num_copia;$i++){
+            Copias::Create(['libros_id'=>$libro->id,'copia'=>$i,]);
+        }
+
+        return redirect()->route('books.index');
     }
 
     /**
-     * Display the resource.
+     * Display the specified resource.
      *
+     * @param  \App\Models\libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(libros $libro)
     {
-        //
+        
     }
 
     /**
-     * Show the form for editing the resource.
+     * Show the form for editing the specified resource.
      *
+     * @param  \App\Models\libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(libros $libro)
     {
-        //
+        
     }
 
     /**
-     * Update the resource in storage.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, libros $libro)
     {
-        //
+        
     }
 
     /**
-     * Remove the resource from storage.
+     * Remove the specified resource from storage.
      *
+     * @param  \App\Models\libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(libros $book)
     {
-        abort(404);
+        $book->delete();
+        return redirect()->route('books.index');
     }
 }

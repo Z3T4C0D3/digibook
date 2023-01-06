@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AutoresController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\EditorialesController;
+use App\Http\Controllers\LibrosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +26,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>['auth']],function(){
+    Route::resource("roles",RolController::class);
+    Route::resource("usuarios",UsuarioController::class);
+    Route::resource("authors",AutoresController::class);
+    Route::resource("categories",CategoriasController::class);
+    Route::resource("publishers",EditorialesController::class);
+    Route::resource("books",LibrosController::class);
+});
