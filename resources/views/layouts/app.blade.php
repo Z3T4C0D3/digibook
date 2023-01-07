@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://unpkg.com/alpinejs@3.1.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="bg-info">
     <div id="app">
@@ -64,6 +65,13 @@
                                     <a class="dropdown-item" href="{{url('publishers')}}">Editoriales</a>
                                     <a class="dropdown-item" href="{{url('books')}}">Libros</a>
                                     
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown text-white" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Consultas</a>
+                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{url('loans')}}">Prestamos</a>
+                                   <!-- <a class="dropdown-item" href="{{url('roles')}}">Roles</a>-->
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
