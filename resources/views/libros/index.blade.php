@@ -7,7 +7,7 @@
   <div class="py-1">
       <div class="container col-12">
           <div class="row">
-              <div class="d-flex justify-content-center card">
+              <div class="d-flex justify-content-center card text-bg-dark mb-3">
                   <div class="card-body">
                       <div class="py-3">
                           <div class="container">
@@ -26,7 +26,7 @@
                               <div class="row py-1">
                                   <div class="col-md-12">
                                       <div class="table-responsive">
-                                          <table class="table table-bordered ">
+                                          <table class="table table-bordered table-dark border-primary mt-4 ">
                                               <thead class="thead-dark">
                                               <tr>
                                                   <th>#</th>

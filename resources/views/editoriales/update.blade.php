@@ -5,7 +5,7 @@
 @endsection
 @section("content")
     <div class="container">
-        <div class="card">
+        <div class="card text-bg-dark mb-3">
             <div class="card-body">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10 d-flex justify-content-center">

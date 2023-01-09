@@ -5,7 +5,7 @@
 @endsection
 @section("content")
     <div class="container">
-        <div class="card">
+        <div class="card text-bg-dark mb-3 ">
             <div class="card-body">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10 d-flex justify-content-center">
@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-6 d-flex justify-content-center">
-                        <table class="table table-bordered mt-4">
+                    <div class="col-10 d-flex justify-content-center">
+                        <table class="table table-bordered table-dark border-primary mt-4">
                            <thead class="thead-dark text-center">
                                <tr>
                                    <th>ID</th>

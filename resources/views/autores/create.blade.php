@@ -5,7 +5,7 @@
 @endsection
 @section("content")
     <div class="container">
-        <div class="card">
+        <div class="card text-bg-dark mb-3">
             <div class="card-body">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10 d-flex justify-content-center">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-6 d-flex justify-content-center">
+                    <div class="col-10 d-flex justify-content-center">
                         <form id="c_form-h" method="post" action="{{url('authors')}}">
                             @csrf
                             <div class="form-group row d-flex justify-content-center">

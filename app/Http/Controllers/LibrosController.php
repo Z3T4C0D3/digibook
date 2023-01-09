@@ -10,7 +10,7 @@ use App\Models\Autores;
 use App\Models\AutoresLibros;
 use App\Models\Copias;
 use App\Models\user;
-//use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
  
 class LibrosController extends Controller
 {
@@ -52,22 +52,23 @@ class LibrosController extends Controller
     public function store(Request $request)
     {
         
-        /*$request->validate([
+        $request->validate([
             "titulo"=>"required",
             "anio"=>"required",
             "descripcion"=>"required",
             "editoriales_id"=>"required",
             "file"=>"required|image|max:2048",
-            ],[],["name"=>"nombre","content"=>"contenido"]);*/
+            ],[],["name"=>"nombre","content"=>"contenido"]);
+        return Storage::put('public/libros', $request->file('file'));   
 
         $libro=Libros::Create($request->all());
 
-        /*if ($request->file('file')) {
+        if ($request->file('file')) {
             $url=Storage::put('public/libros',$request->file('file'));
             $libro->image()->create([
                 'url'=>$url
             ]);
-        }*/
+        }
 
 
         foreach ($request->autores_id as $autor) {
