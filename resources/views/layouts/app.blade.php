@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+   
 
     <title>{{ config('app.name', 'Digibook') }}</title>
 
@@ -104,6 +106,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <script src="https://unpkg.com/alpinejs@3.1.x/dist/cdn.min.js" defer></script>
+        @stack("scripts")
     </div>
 </body>
 </html>

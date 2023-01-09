@@ -61,14 +61,15 @@ class PrestamosController extends Controller
      */
     public function create()
     {
+        
         $libros = Libros::all()->toJson(JSON_PRETTY_PRINT);
         
         /* $copias=ejemplares::where('libros_id', )->get(); */
         $copias = Copias::all()->toJson(JSON_PRETTY_PRINT);
-
+        /* dd($copias); */
        
 
-        return view("prestamos.create",compact("copias","libros"));
+        return view("prestamos.create",compact('libros','copias'));
     }
 
     /**

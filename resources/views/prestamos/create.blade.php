@@ -5,14 +5,13 @@
 document.addEventListener('alpine:init', () => {
   Alpine.data('app', () => ({
 		libros:{!!$libros!!},
-		
     libro:null,
     copia:null,
     copias(){return getCopias(this.libro)},
 		
   }))
 });
-
+console.log(libros);
 const getLibros = () => {
   return {!!$libros!!};
 }
@@ -21,8 +20,6 @@ const getCopias = (libro) => {
 }
 
 </script>
-
-  
 @endpush
 
 @section("estantes")
@@ -47,19 +44,19 @@ const getCopias = (libro) => {
                     @csrf
                       <input type="hidden" name="users_id" value="{{auth()->user()->id}}">
                       <div x-data="app" x-cloak>
-                        <label>Libros:
+                        <label>Libros:</label>
                         <select x-model="libro">
                           <option value="">Selecciona un libro</option>
                           <template x-for="libro in libros">
                             <option :value="libro.id"><span x-text="libro.titulo"></span></option>
                           </template>
                         </select>
-                        </label>
+                        
                         
                         <label x-show="libro">Copia:
-                          <select x-model="copia" name="ejemplares_id">
+                          <select x-model="copia" >
                             <template x-for="copia in copias">
-                              <option x-show="copia.libros_id == libro" :value="copia.id"><span x-text="copia.num_copia"></span></option>
+                              <option x-show="copia.libros_id == libro":value="copia.id"><span x-text="copia.copia"></span></option>
                             </template>
                           </select>
                         </label>
