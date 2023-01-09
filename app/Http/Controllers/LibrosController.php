@@ -10,6 +10,7 @@ use App\Models\Autores;
 use App\Models\AutoresLibros;
 use App\Models\Copias;
 use App\Models\user;
+use App\Models\LibrosCategorias;
 use Illuminate\Support\Facades\Storage;
  
 class LibrosController extends Controller
@@ -51,15 +52,15 @@ class LibrosController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $request->validate([
+        //dd($request->all());
+        /*$request->validate([
             "titulo"=>"required",
             "anio"=>"required",
             "descripcion"=>"required",
             "editoriales_id"=>"required",
             "file"=>"required|image|max:2048",
-            ],[],["name"=>"nombre","content"=>"contenido"]);
-        return Storage::put('public/libros', $request->file('file'));   
+            ],[],["name"=>"nombre","content"=>"contenido"]);*/
+        //return Storage::put('public/libros', $request->file('file'));   
 
         $libro=Libros::Create($request->all());
 
@@ -71,11 +72,17 @@ class LibrosController extends Controller
         }
 
 
-        foreach ($request->autores_id as $autor) {
+        foreach ($request->autores as $autor) {
             //dd($autor);
             $asigna_autor=AutoresLibros::firstOrCreate(['libros_id'=>$libro->id,
                         'autores_id'=>$autor]);
         }
+
+        foreach ($request->categorias as $categoria) {
+            //dd($autor);
+            $asigna_categoria=LibrosCategorias::firstOrCreate(['libros_id'=>$libro->id,'categorias_id'=>$categoria]);
+        }
+
         for($i=1;$i<=$request->num_copia;$i++){
             Copias::Create(['libros_id'=>$libro->id,'copia'=>$i,]);
         }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Categorias;
 use App\Models\Autores;
 use App\Models\images;
 use App\Models\Editoriales;
@@ -21,12 +20,7 @@ class Libros extends Model
         'anio_publicacion',
         'descripcion',
         'editoriales_id',
-        'categorias_id',
     ];
-
-    public function categorias(){
-        return $this->belongsToMany(Categorias::class);
-    }
 
     public function autores(){
         return $this->belongsToMany(Autores::class);

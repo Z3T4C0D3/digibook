@@ -74,7 +74,22 @@
                                     @enderror
                                 </div>
                             </div>
-                                
+                           
+                            <div class="my-2 d-lg-flex">
+                                    <label class="col-sm-2">Editorial</label>
+                                        <div class="d-flex col-lg-9 ">
+                                            <select checked="checked" class="form-control @error('editoriales_id')is-invalid @enderror" id="editoriales_id" name="editoriales_id" required="required" style=" text: 0px 0px 4px black;">
+                                                <option selected="0"> Elegir editorial </option>
+                                                @foreach ($editorial as $edit)
+                                                    <option value="{{$edit->id}}"> {{$edit->descripcion}} </option>
+                                                @endforeach
+                                            </select>
+                                            @error('editoriales_id')
+                                            <div class="invalid-feedback">{{$message}}</div>
+                                            @enderror
+                                    </div>
+                                    
+                                </div> 
                                 
                             <div class="my-2 d-flex">
                                 <label class="col-2 d-flex">Categorias</label>
@@ -129,14 +144,6 @@
                             </div>
 
                             </div>
-
-                            
-                                
-
-                            
-
-                            
-                        
                     </div>
                 </div>
             </div>

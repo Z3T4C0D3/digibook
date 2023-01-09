@@ -20,10 +20,8 @@ return new class extends Migration
             $table->string("anio_publicacion");
             $table->string("descripcion");
             //FK
-            $table->unsignedBigInteger('categorias_id');
             $table->unsignedBigInteger('editoriales_id');
             //RESTRICCION DE FK
-            $table->foreign('categorias_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->foreign('editoriales_id')->references('id')->on('editoriales')->onDelete('cascade');
             $table->timestamps();
         });
