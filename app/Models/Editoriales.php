@@ -9,7 +9,7 @@ use App\Models\Libros;
 class Editoriales extends Model
 {
     use HasFactory;
-    protected $fillable=['descripcion',];
+    protected $fillable=['descripcion'];
     public function libros(){
         return $this->hasMany(Libros::class);
     }

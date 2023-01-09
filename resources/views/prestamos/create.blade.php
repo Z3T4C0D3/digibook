@@ -39,7 +39,7 @@ const getCopias = (libro) => {
     </div>
   </div>
 
-  <div class="container col-sm-2">
+  <div class="container col-sm-5">
       <div class="row">
           <div class="card text-center">
               <div class="card-body">

@@ -14,6 +14,7 @@
    
 
     <title>{{ config('app.name', 'Digibook') }}</title>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,11 +26,21 @@
 </head>
 <body class="bg-info">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light .bg-primary-subtle shadow-sm ">
-            <div class="container">
-                <a class="navbar-brand text-dark" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Digibook') }}
-                </a>
+        <nav class="navbar navbar-expand-md shadow-sm" style="background-color:#43193f;" >
+            <div class="container ">
+                <div class="row">
+                    <div class="col-12">
+
+                        <a class="navbar-brand text-dark" href="{{ url('/home') }}">
+                            <div class="justify-content-center">
+                                <img src="img/libro.png">
+                                <h3 class="fst-italic text-white">DigiBOOK</h3>
+                                
+                            </div>
+                            
+                        </a>
+                    </div>
+                </div>
                 <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,26 +57,26 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link text-white fs-3" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white fs-3" href="{{ route('register') }}">{{ __('Registro') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown text-dark" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>General</a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>General</a>
+                                <div class="dropdown-menu dropdown-menu bg-warning "  aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{url('usuarios')}}">Usuarios</a>
                                     <a class="dropdown-item" href="{{url('roles')}}">Roles</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown text-dark" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Acervo</a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="navbarDropdown text-white" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Acervo</a>
+                                <div class="dropdown-menu dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{url('authors')}}">Autores</a>
                                     <a class="dropdown-item" href="{{url('categories')}}">Categorias</a>
                                     <a class="dropdown-item" href="{{url('publishers')}}">Editoriales</a>
@@ -74,21 +85,21 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown text-dark" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Consultas</a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a id="navbarDropdown text-dark" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Consultas</a>
+                                <div class="dropdown-menu dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{url('loans')}}">Prestamos</a>
                                     <a class="dropdown-item" href="{{url('returns')}}">Devoluciones</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end bg-warning" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -25,6 +25,9 @@ class Libros extends Model
     public function autores(){
         return $this->belongsToMany(Autores::class);
     }
+    public function categorias(){
+        return $this->belongsToMany(Categorias::class);
+    }
     public function image(){
         return $this->morphOne(images::class,'imageable');
     }

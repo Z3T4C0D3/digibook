@@ -45,12 +45,7 @@
                                                       <td>{{$datos->anio_publicacion}}</td>
                                                       <td>
                                                           <div class="d-flex">
-                                                              @can('editar-libro')
-                                                                  <a class="btn btn-warning" href="{{route('books.edit',$datos->id)}}"
-                                                                     data-toggle="tooltip" rel="tooltip" data-placement="top" title="Editar datos">
-                                                                      Actualizar
-                                                                  </a>
-                                                                @endcan
+                                                              
                                                               @can('borrar-libro')
                                                                   <form action="{{route('books.destroy',$datos->id)}}" method="post">
                                                                       @csrf
@@ -60,6 +55,10 @@
                                                                       </button>
                                                                   </form>
                                                               @endcan
+                                                              <a class="btn btn-primary ms-2" href="{{route('libros.show',$datos->id)}}"
+                                                                data-toggle="tooltip" rel="tooltip" data-placement="top" title="Editar datos">
+                                                                 Ver Libro
+                                                             </a>
                                                               <!--
                                                               @can('ver-libro')
                                                               <a class="btn btn-info" href="{{route('books.show',$datos->id)}}">Ver

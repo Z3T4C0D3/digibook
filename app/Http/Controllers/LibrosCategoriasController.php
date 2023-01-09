@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LibrosCategorias;
 use Illuminate\Http\Request;
+use App\Models\Libros;
 
 class LibrosCategoriasController extends Controller
 {
@@ -44,9 +45,9 @@ class LibrosCategoriasController extends Controller
      * @param  \App\Models\LibrosCategorias  $librosCategorias
      * @return \Illuminate\Http\Response
      */
-    public function show(LibrosCategorias $librosCategorias)
+    public function show(Libros $libro)
     {
-        //
+        
     }
 
     /**

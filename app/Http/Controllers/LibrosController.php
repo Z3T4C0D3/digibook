@@ -96,9 +96,15 @@ class LibrosController extends Controller
      * @param  \App\Models\libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function show(libros $libro)
+    public function show(Libros $libro)
     {
-        
+        $libros = Libros::where('id', $libro->id)
+        ->first();
+        $autores = Autores::where('id', $libro->id)
+        ->first();
+        $categorias = Categorias::where('id', $libro->id)
+        ->first();
+        return view('libros.show', compact('libro','libros','autores','categorias'));
     }
 
     /**

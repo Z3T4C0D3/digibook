@@ -38,9 +38,7 @@
                                         <td>{{$devolucion->observaciones}}</td>
                                         <td>
                                             <div class="row d-flex justify-content-center">
-                                                <div class="col-5 d-flex justify-content-center">
-                                                    <a class="btn btn-warning mx-2" href="{{route('returns.edit',$devolucion->id)}}">Actualizar</a>
-                                                </div>
+                                                
                                                 <div class="col-5 d-flex justify-content-center">
                                                     <form action="{{route('returns.destroy',$devolucion->id)}}" method="POST">
                                                         @csrf

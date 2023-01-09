@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="container col-sm-2">
+  <div class="container col-sm-5">
       <div class="row">
           <div class="d-flex justify-content-center card">
               <div class="card-body">
