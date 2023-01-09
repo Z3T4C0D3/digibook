@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EditorialesController;
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\PrestamosController;
+use App\Http\Controllers\DevolucionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,5 @@ Route::group(['middleware'=>['auth']],function(){
     Route::resource("publishers",EditorialesController::class);
     Route::resource("books",LibrosController::class);
     Route::resource("loans",PrestamosController::class);
+    Route::resource("returns",DevolucionesController::class);
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Devoluciones;
 use Illuminate\Http\Request;
+use App\Models\Prestamos;
 
 class DevolucionesController extends Controller
 {
@@ -21,7 +22,8 @@ class DevolucionesController extends Controller
      */
     public function index()
     {
-        //
+        $devoluciones=Devoluciones::all();
+         return view('devoluciones.index',compact("devoluciones"));
     }
 
     /**
@@ -31,7 +33,9 @@ class DevolucionesController extends Controller
      */
     public function create()
     {
-        //
+        $prestamos=Prestamos::where('users_id',auth()->user()->id)->get();
+        
+        return view('devoluciones.create',compact('prestamos'));
     }
 
     /**
@@ -42,7 +46,9 @@ class DevolucionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        Devoluciones::Create($request->all());
+        return redirect()->route('returns.index');
     }
 
     /**
@@ -85,8 +91,9 @@ class DevolucionesController extends Controller
      * @param  \App\Models\Devoluciones  $devoluciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Devoluciones $devoluciones)
+    public function destroy(Devoluciones $return)
     {
-        //
+        $return->delete();
+        return redirect()->route('returns.index');
     }
 }

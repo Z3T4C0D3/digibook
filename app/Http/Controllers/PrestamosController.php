@@ -84,7 +84,7 @@ class PrestamosController extends Controller
         //dd($request->all());
         
         Prestamos::Create(['users_id'=>$request->users_id,
-                          'ejemplares_id'=>$request->ejemplares_id, ]);
+                          'copias_id'=>$request->copias_id, ]);
         return redirect()->route('loans.index');
     }
 

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Devoluciones extends Model
 {
     use HasFactory;
+    protected $fillable=['prestamos_id','observaciones',];
 }

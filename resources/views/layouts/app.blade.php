@@ -77,7 +77,7 @@
                                 <a id="navbarDropdown text-dark" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Consultas</a>
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{url('loans')}}">Prestamos</a>
-                                   <!-- <a class="dropdown-item" href="{{url('roles')}}">Roles</a>-->
+                                    <a class="dropdown-item" href="{{url('returns')}}">Devoluciones</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
