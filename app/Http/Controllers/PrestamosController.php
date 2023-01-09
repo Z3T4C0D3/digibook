@@ -23,7 +23,7 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-        /*
+        /* 
             SELECT 
                 estantes.id,
                 users.name,
@@ -65,8 +65,9 @@ class PrestamosController extends Controller
         $libros = Libros::all()->toJson(JSON_PRETTY_PRINT);
         
         /* $copias=ejemplares::where('libros_id', )->get(); */
-        $copias = Copias::all()->toJson(JSON_PRETTY_PRINT);
-        /* dd($copias); */
+        $copias =Copias::all()->toJson(JSON_PRETTY_PRINT);
+
+        //dd($libros);
        
 
         return view("prestamos.create",compact('libros','copias'));

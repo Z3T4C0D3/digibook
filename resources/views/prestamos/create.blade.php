@@ -4,14 +4,15 @@
 <script type="text/javascript">
 document.addEventListener('alpine:init', () => {
   Alpine.data('app', () => ({
-		libros:{!!$libros!!},
+    libros:{!!$libros!!},
+    
     libro:null,
     copia:null,
     copias(){return getCopias(this.libro)},
-		
+    
   }))
 });
-console.log(libros);
+
 const getLibros = () => {
   return {!!$libros!!};
 }
@@ -20,9 +21,11 @@ const getCopias = (libro) => {
 }
 
 </script>
+
+  
 @endpush
 
-@section("estantes")
+@section("prestamos")
     active
 @endsection
 @section("content")
@@ -36,34 +39,35 @@ const getCopias = (libro) => {
     </div>
   </div>
 
-  <div class="container col-sm-12">
+  <div class="container col-sm-2">
       <div class="row">
-          <div class="d-flex justify-content-center card">
+          <div class="card text-center">
               <div class="card-body">
                   <form id="c_form-h" method="POST" action="{{url('loans')}}">
                     @csrf
                       <input type="hidden" name="users_id" value="{{auth()->user()->id}}">
+                      
                       <div x-data="app" x-cloak>
-                        <label>Libros:</label>
+                        <label>Libros:
                         <select x-model="libro">
                           <option value="">Selecciona un libro</option>
                           <template x-for="libro in libros">
                             <option :value="libro.id"><span x-text="libro.titulo"></span></option>
                           </template>
                         </select>
-                        
+                        </label>
                         
                         <label x-show="libro">Copia:
-                          <select x-model="copia" >
+                          <select x-model="copia" name="copias_id">
                             <template x-for="copia in copias">
-                              <option x-show="copia.libros_id == libro":value="copia.id"><span x-text="copia.copia"></span></option>
+                              <option x-show="copia.libros_id == libro" :value="copia.id"><span x-text="copia.copia"></span></option>
                             </template>
                           </select>
                         </label>
                       </div>
                   
                       <div class="text-center">
-                      <button type="submit" class="btn btn-dark text-capitalize border border-left border-right
+                      <button type="submit" class="my-2 btn btn-dark text-capitalize border border-left border-right
                             border-top border-bottom border-light rounded-lg active text-decoration-none">Agregar<br></button>
                       </div>
                   </form>
