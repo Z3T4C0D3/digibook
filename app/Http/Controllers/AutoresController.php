@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Autores;
-
+use Illuminate\Support\Facades\DB;
 class AutoresController extends Controller
 { 
     function __construct()
@@ -41,7 +41,7 @@ class AutoresController extends Controller
         $request->validate([
             "nombre"=>"required|min:3|max:100",
             ],[],["name"=>"nombre","content"=>"contenido"]);
-        Autores::Create(['nombre'=>$request->nombre,]);
+        $autor=DB::select("CALL Cargar_Autor('$request->nombre')");
         return redirect()->route('authors.index');
     }
 
