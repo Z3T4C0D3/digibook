@@ -22,7 +22,7 @@ use App\Http\Controllers\DevolucionesController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
