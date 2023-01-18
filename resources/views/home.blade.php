@@ -2,11 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col text-center">
-                    <img src="img/DIGIBOOK.gif" class="card-img" width="350" height="450" style="">
-        </div>
-    </div>
+    
     
 
         <div class="row row-cols-4 justify-content-center">
